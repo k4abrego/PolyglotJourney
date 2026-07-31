@@ -8,3 +8,4 @@ for valor in valores:
         resultado -= 2
 
 print("el resultado es:", resultado)
+
