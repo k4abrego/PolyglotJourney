@@ -21,3 +21,4 @@ def negate(input_path: str, output_path: str) -> None:
     
 if __name__ == '__main__':
     negate('images/puppy.png', 'images/puppy_negative.png')
+    print("Done!")
