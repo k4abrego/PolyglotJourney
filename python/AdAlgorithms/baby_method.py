@@ -9,6 +9,7 @@ def baby_methods(s:float, guess: float, delta: float) -> float:
         prev = guess
 
 
+
 if __name__ == '__main__':
     x: float = 30 
     result: float = baby_methods(30, 5, 0.0001)

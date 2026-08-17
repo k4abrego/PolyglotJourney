@@ -28,7 +28,6 @@ if __name__ == '__main__':
     print(f'{gcd(20, 30, 40, 70, 100) = }')
     print(f'{gcd(60, 45) = }')
     print(f'{lcm(10, 20) = }')
-    print(f'{lcm(15, 20) = }')
 
 
 
