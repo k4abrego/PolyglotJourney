@@ -13,7 +13,7 @@ def negate(input_path: str, output_path: str) -> None:
     green: int
     blue: int
     for (red, green, blue) in in_stream:
-        out_stream.append((255 - red, 255- green, 255 - blue))
+        out_stream.append((255 - red, 255- green, 255 - blue)) #marks the pixel data for the output image as the negative of the input image
     out_img: Image.Image = Image.new('RGB', size) # create a blank image with the same size as the input image
     out_img.putdata(out_stream) #copy pixel data from the output stream to the output image
 
