@@ -23,6 +23,5 @@ def shrink(input_path: str, output_path: str) -> None:
     out_img.save(output_path) 
 
 if __name__ == '__main__':
-    #shrink('images/tree.png', 'images/tree_shrinking.png')
     shrink('images/puppy.png', 'images/puppy_tiny.png')
     print("Done!")
