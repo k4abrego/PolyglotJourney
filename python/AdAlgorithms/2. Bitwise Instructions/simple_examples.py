@@ -34,4 +34,11 @@ print()
 print(f'{~a = }') # bitwise NOT
 print(f'{~b = }')
 print(f'{~c = }')
-
+print()
+print(f'{a << 3 = }') # bitwise left shift
+print(f'{b << 2 = }')
+print(f'{c << 1 = }')
+print()
+print(f'{a >> 3 = }') # bitwise right shift
+print(f'{b >> 2 = }')
+print(f'{c >> 1 = }')
