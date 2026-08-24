@@ -7,7 +7,7 @@ def is_even(n: int) -> bool:
 def turn_uneven(n: int) -> int: #next odd number or  the same number if it is already odd
     return n | 1
 
-# O(log n) because we are shifting the bits of n to the right until n becomes 0
+# O(log N) because we are shifting the bits of n to the right until n becomes 0
 def count_one_bits(n: int) -> int:
     count: int = 0
     while n:
