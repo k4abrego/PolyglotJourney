@@ -4,44 +4,39 @@ from collections.abc import Iterator, Iterable
 class OrderedSet[T]:
 
     class Node[N]:
+
         info: N
         next: OrderedSet.Node[N]
         prev: OrderedSet.Node[N]
 
-        #Complexity: O(1)
-        def __int__ (self, value: N) -> None:
-            self.info = self
+        # Complexity: O(1)
+        def __init__(self, value: N) -> None:
+            self.info = value
             self.next = self
             self.prev = self
 
-    __sentinel: OrderedSet.Node[T] #special node that allows works with the nullpointer
+    __sentinel: OrderedSet.Node[T]
     __count: int
 
-    #Complexity: O(1)
-    def __init__(self) -> None:
+    # Complexity: O(N), N = len(values)
+    def __init__(self, values: Iterable[T] = ()) -> None:
         self.__sentinel = OrderedSet.Node(cast(T, None))
-        self.__count = 0 
+        self.__count = 0
+        for elem in values:
+            self.add(elem)
 
-#len()
-    #Complexity: O(1)
-    def __repr__(self) -> int:
-        return  self.__count
+    # Complexity: O(1)
+    def __len__(self) -> int:
+        return self.__count
 
-    #Complexity: O(N)
+    # Complexity: O(N)
     def __repr__(self) -> str:
-        current: OrderedSet.Node[T] = self.__sentinel.next
-        result: list[T] = []
-        while current is not self.__sentinel:
-            result.append(current.info)
-            current = current.next
-        return f'OrderedSet({result})' #list with all the items
+        return f'OrderedSet({list(self) if self else ""})'
 
-#add
-    #Complexity: O(1)
+    # Complexity: O(N)
     def add(self, value: T) -> None:
         if value in self:
             return
-        #Assume that values doesn't exist, so add to the end 
         self.__count += 1
         new_node: OrderedSet.Node[T] = OrderedSet.Node(value)
         new_node.prev = self.__sentinel.prev
@@ -63,21 +58,21 @@ class OrderedSet[T]:
                 return True
         return False
 
+    # Complexity: O(N) because we have to search for the value in the set
+    def discard(self, value: T) -> None :
+        current: OrderedSet.Node[T] = self.__sentinel.next
+        while current is not self.__sentinel:
+            if current.info == value:
+                current.prev.next = current.next
+                current.next.prev = current.prev
+                current = None
+                self.__count -= 1
+                return
+            current = current.next
+
+
 if __name__ == '__main__':
-    a: OrderedSet[int] = OrderedSet()
-    a.add(4)
-    a.add(8)
-    a.add(15)
-    a.add(16)
-    a.add(23)
-
-    print(len(a))
-
-    it: Iterator[int] = iter(a)
-    print(next(it))
-    print(next(it))
+    a: OrderedSet[int] = OrderedSet([4, 8, 15, 16, 23])
+    print(a)
+    a.discard(8)
     print()
-    for i in a:
-        print(i)
-    b: OrderedSet[str] = OrderedSet('hello')
-    print(b)
