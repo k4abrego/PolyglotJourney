@@ -139,40 +139,40 @@ class TestOrderedSet(TestCase):
             self.assertEqual(x, y)
         self.assertEqual((), tuple(iter(self.d)))
 
-    # def test_eq(self) -> None:
-    #     a = OrderedSet([15, 8, 23, 4, 42, 16])
-    #     self.assertTrue(a == self.a)
-    #     self.assertTrue(self.a == a)
-    #     a.discard(4)
-    #     a.discard(15)
-    #     a.discard(23)
-    #     self.assertFalse(a == self.a)
-    #     self.assertFalse(cast(OrderedSet[int], OrderedSet()) == self.a)
-    #     b = OrderedSet([3.1415926536, 1.4142135624,
-    #                     1.7320508076, 1.6180339887,
-    #                     3.1622776602, 2.7182818285])
-    #     self.assertTrue(b == self.b)
-    #     self.assertTrue(self.b == b)
-    #     b.discard(3.1415926536)
-    #     b.discard(1.4142135624)
-    #     self.assertFalse(b == self.b)
-    #     self.assertFalse(cast(OrderedSet[float], OrderedSet()) == self.b)
-    #     c = OrderedSet(['Ori', 'Fili', 'Oin',
-    #                     'Gloin', 'Thorin', 'Bifur',
-    #                     'Nori', 'Balin', 'Bombur',
-    #                     'Kili', 'Dwalin', 'Dori',
-    #                     'Bofur'])
-    #     self.assertTrue(c == self.c)
-    #     self.assertTrue(self.c == c)
-    #     c.discard('Kili')
-    #     c.discard('Fili')
-    #     c.discard('Ori')
-    #     c.discard('Dori')
-    #     self.assertFalse(c == self.c)
-    #     self.assertFalse(cast(OrderedSet[str], OrderedSet()) == self.c)
-    #     d = OrderedSet(self.d)
-    #     self.assertTrue(d == self.d)
-    #     self.assertTrue(self.d == d)
+    def test_eq(self) -> None:
+        a = OrderedSet([15, 8, 23, 4, 42, 16])
+        self.assertTrue(a == self.a)
+        self.assertTrue(self.a == a)
+        a.discard(4)
+        a.discard(15)
+        a.discard(23)
+        self.assertFalse(a == self.a)
+        self.assertFalse(cast(OrderedSet[int], OrderedSet()) == self.a)
+        b = OrderedSet([3.1415926536, 1.4142135624,
+                        1.7320508076, 1.6180339887,
+                        3.1622776602, 2.7182818285])
+        self.assertTrue(b == self.b)
+        self.assertTrue(self.b == b)
+        b.discard(3.1415926536)
+        b.discard(1.4142135624)
+        self.assertFalse(b == self.b)
+        self.assertFalse(cast(OrderedSet[float], OrderedSet()) == self.b)
+        c = OrderedSet(['Ori', 'Fili', 'Oin',
+                        'Gloin', 'Thorin', 'Bifur',
+                        'Nori', 'Balin', 'Bombur',
+                        'Kili', 'Dwalin', 'Dori',
+                        'Bofur'])
+        self.assertTrue(c == self.c)
+        self.assertTrue(self.c == c)
+        c.discard('Kili')
+        c.discard('Fili')
+        c.discard('Ori')
+        c.discard('Dori')
+        self.assertFalse(c == self.c)
+        self.assertFalse(cast(OrderedSet[str], OrderedSet()) == self.c)
+        d = OrderedSet(self.d)
+        self.assertTrue(d == self.d)
+        self.assertTrue(self.d == d)
 
     # def test_le(self) -> None:
     #     a = OrderedSet(self.a)
