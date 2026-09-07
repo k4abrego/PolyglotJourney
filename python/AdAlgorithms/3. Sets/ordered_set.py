@@ -1,4 +1,5 @@
 from typing import cast
+from collections.abc import Iterator, Iterable
 
 class OrderedSet[T]:
 
@@ -38,16 +39,29 @@ class OrderedSet[T]:
 #add
     #Complexity: O(1)
     def add(self, value: T) -> None:
-        # TODO: Check if value already exists
-
+        if value in self:
+            return
         #Assume that values doesn't exist, so add to the end 
         self.__count += 1
-        new_node: OrderedSet.Node(T) = OrderedSet.Node(value)
-        new_node.prev: self.__sentinel.prev 
-        new_node.next: self.__sentinel.next
+        new_node: OrderedSet.Node[T] = OrderedSet.Node(value)
+        new_node.prev = self.__sentinel.prev
+        new_node.next = self.__sentinel
         self.__sentinel.prev.next = new_node
         self.__sentinel.prev = new_node
-        
+
+    # Complexity: O(N)
+    def __iter__(self) -> Iterator[T]:
+        current: OrderedSet.Node[T] = self.__sentinel.next
+        while current is not self.__sentinel:
+            yield current.info
+            current = current.next
+
+    # Complexity: O(N)
+    def __contains__(self, value: object) -> bool:
+        for elem in self:
+            if elem == value:
+                return True
+        return False
 
 if __name__ == '__main__':
     a: OrderedSet[int] = OrderedSet()
@@ -56,4 +70,14 @@ if __name__ == '__main__':
     a.add(15)
     a.add(16)
     a.add(23)
+
     print(len(a))
+
+    it: Iterator[int] = iter(a)
+    print(next(it))
+    print(next(it))
+    print()
+    for i in a:
+        print(i)
+    b: OrderedSet[str] = OrderedSet('hello')
+    print(b)
