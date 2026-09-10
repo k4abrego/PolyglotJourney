@@ -121,10 +121,10 @@ class OrderedSet[T]:
     # def pop(self) -> T: - calling de len until the set is empty and then calling pop will raise an error
 
 if __name__ == '__main__':
-    # a: OrderedSet[int] = OrderedSet([4, 8, 15, 16, 23])
-    # print(a)
-    # a.discard(8)
-    # print(a)
+    a: OrderedSet[int] = OrderedSet([4, 8, 15, 16, 23])
+    print(a)
+    a.discard(8)
+    print(a)
 
     a: OrderedSet[int] = OrderedSet([4, 8, 15, 16, 23])
     b: OrderedSet[int] = OrderedSet([23, 4, 8, 16])
