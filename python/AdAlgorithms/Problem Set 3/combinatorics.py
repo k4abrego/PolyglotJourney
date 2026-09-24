@@ -36,6 +36,19 @@ def permute[T] (s: list[T]) -> list[list[T]]:
     return sum([insert_everywhere(s[-1], e) for e in permute(s[:-1])], empty) # Recursively call permute excluding the last element
     #return sum([insert_everywhere(s[:-1], e) for e in permute(s[:-1])], [])
 
+def permutations[T](s: list[T], k: int) -> list[list[T]]:
+    empty: list[list[T]] = []
+    return sum([permute(e) for e in combinations(s, k)], empty) # Recursively call permute for each combination of length k
+
+
+#1. A k-permutation with repetition of n objects is a way of selecting k objects from a list of size n.
+# permutations_with_repetition 
+
+
+#2. A combination with repetition of k objects from n is a way of selecting k objects from a list of size n.
+# combinations_with_repetition
+
+
 if __name__ == "__main__":
     # pprint(power_set([])) #type: ignore
     # pprint(power_set([1])) 
@@ -47,4 +60,5 @@ if __name__ == "__main__":
     # pprint(insert(7, [1, 2, 3], 3))
     # pprint(insert(7, [1, 2, 3], 0))
     # pprint(insert_everywhere(7, [1, 2, 3, 4, 5, 6]))
-    pprint(permute([1, 2]))
+    # pprint(permute([1, 2]))
+    pprint(sorted(permutations([1, 2, 3], 2)))
