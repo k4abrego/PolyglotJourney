@@ -1,13 +1,3 @@
-#----------------------------------------------------------
-# Lab #3: Combinatorics
-# Permutations and combinations with repetitions.
-#
-# Date: 02-Oct-2026
-# Authors:
-#           A01770771 James Howlett
-#           A01777771 Wade Wilson
-#----------------------------------------------------------
-
 from pprint import pprint
 from typing import cast
 
@@ -52,7 +42,15 @@ def permutations[T](s: list[T], k: int) -> list[list[T]]:
 
 
 #1. A k-permutation with repetition of n objects is a way of selecting k objects from a list of size n.
-# permutations_with_repetition 
+#The order of selection matters (the same k objects selected in different orders are regarded as different k-permutations).
+#Each object can be selected more than once
+
+def permutations_with_repetition[T](s: list[T], k: int) -> list[list[T]]:
+    if k == 0:
+        return [[]]
+    if not s:
+        return []
+    return [[x] + permutation for x in s for permutation in permutations_with_repetition(s, k - 1)]
 
 #2. A combination with repetition of k objects from n is a way of selecting k objects from a list of size n.
 # combinations_with_repetition
