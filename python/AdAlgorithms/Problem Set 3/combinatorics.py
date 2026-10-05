@@ -42,9 +42,6 @@ def permutations[T](s: list[T], k: int) -> list[list[T]]:
 
 
 #1. A k-permutation with repetition of n objects is a way of selecting k objects from a list of size n.
-#The order of selection matters (the same k objects selected in different orders are regarded as different k-permutations).
-#Each object can be selected more than once
-
 def permutations_with_repetition[T](s: list[T], k: int) -> list[list[T]]:
     if k == 0:
         return [[]]
