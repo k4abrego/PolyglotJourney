@@ -1,3 +1,13 @@
+#----------------------------------------------------------
+# Lab #4: A* Search Algorithm
+# Solving the 15 puzzle.
+#
+# Date: 14-Oct-2026
+# Authors:
+#           A01753979 Ana Karen Abrego Flores
+#           A01803514 Gabriel de Jesús Manzo Cuevas
+#----------------------------------------------------------
+
 from generic_search import astar, Node, node_to_path
 
 type Frame = tuple[tuple[int, ...], ...]
@@ -5,7 +15,7 @@ type Frame = tuple[tuple[int, ...], ...]
 GOAL = ((1, 2, 3, 4),
         (5, 6, 7, 8),
         (9, 10, 11, 12),
- (13, 14, 15, 0))
+        (13, 14, 15, 0))
 
 
 def goal_test(frame: Frame) -> bool:
@@ -58,8 +68,7 @@ def heuristic(frame: Frame) -> float:
 
 def solve_puzzle(frame: Frame) -> None:
     result: Node[Frame] | None = astar(
-        frame, goal_test, successors, heuristic
-    )
+        frame, goal_test, successors, heuristic)
 
     if result is None:
         print("no solution found")
@@ -71,21 +80,18 @@ def solve_puzzle(frame: Frame) -> None:
     print(f"Solution requires {steps} {'step' if steps == 1 else 'steps'}")
 
     for index, (before, after) in enumerate(
-        zip(path, path[1:]), start=1
-    ):
+        zip(path, path[1:]), start=1):
         old_empty = next(
             (r, c)
             for r in range(4)
             for c in range(4)
-            if before[r][c] == 0
-        )
+            if before[r][c] == 0)
 
         new_empty = next(
             (r, c)
             for r in range(4)
             for c in range(4)
-            if after[r][c] == 0
-        )
+            if after[r][c] == 0)
 
         moved_tile = before[new_empty[0]][new_empty[1]]
 
@@ -100,20 +106,19 @@ def solve_puzzle(frame: Frame) -> None:
             direction = "left"
         else:
             direction = "right"
-
         print(f"Step {index}: Move {moved_tile} {direction}")
 
 
 
-if __name__ == "__main__":
-    solve_puzzle((((2, 3, 4, 8),
-                   (1, 5, 7, 11),
-                   (9, 6, 12, 0),
-                   (13, 14, 10, 15))))
+# if __name__ == "__main__":
+#     solve_puzzle((((2, 3, 4, 8),
+#                    (1, 5, 7, 11),
+#                    (9, 6, 12, 0),
+#                    (13, 14, 10, 15))))
 
-    print()
+#     print()
 
     print(heuristic(((2, 3, 4, 8),
-                  (1, 5, 7, 11),
-                  (9, 6, 12, 0),
-                  (13, 14, 10, 15))))
+                     (1, 5, 7, 11),
+                     (9, 6, 12, 0),
+                     (13, 14, 10, 15))))
