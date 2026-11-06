@@ -20,12 +20,12 @@ class Edge(NamedTuple):
         return hash(self.weight) + hash(self.u) + hash(self.v)
 
 
-    def sort_edges(graph: WeightedGraph) -> deque[Edge]:
-        result: set[Edge] = set()
-        for u, neighbours in graph.items(): # neighbours: a set tuple, each tuple contains an number, int
-            for v, weight in neighbours:
-                result.add(Edge(weight, u, v))
-        return deque(sorted(list(result)))
+def sort_edges(graph: WeightedGraph) -> deque[Edge]:
+    result: set[Edge] = set()
+    for u, neighbours in graph.items(): # neighbours: a set tuple, each tuple contains an number, int
+        for v, weight in neighbours:
+            result.add(Edge(weight, u, v))
+    return deque(sorted(list(result)))
 
 if __name__ == '__main__':
     g1: WeightedGraph = {
@@ -45,8 +45,14 @@ if __name__ == '__main__':
         'H': {('F', 4), ('G', 5)}
     }
 
-    e1: Edge = Edge(10, 'A', 'B')
-    e2: Edge = Edge(10, 'B', 'A')
-    print(e1)
-    print(e2)
-    print(e1 == e2)
+    # e1: Edge = Edge(10, 'A', 'B')
+    # e2: Edge = Edge(10, 'B', 'A')
+    # print(e1)
+    # print(e2)
+    # print(e1 == e2)
+
+
+    from pprint import pprint
+    pprint(sort_edges(g1))
+    print()
+    pprint(sort_edges(g2))
