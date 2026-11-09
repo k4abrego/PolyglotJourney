@@ -27,6 +27,17 @@ def sort_edges(graph: WeightedGraph) -> deque[Edge]:
             result.add(Edge(weight, u, v))
     return deque(sorted(list(result)))
 
+def add_edge(graph: WeightedGraph, edge: Edge) -> None:
+    weight, u, v = edge
+    graph[u].add((v, weight)) 
+    graph[v].add((u, weight))
+
+def remove_edge(graph: WeightedGraph, edge: Edge) -> None:
+    weight, u, v = edge
+    graph[u].remove((v, weight))
+    graph[v].remove((u, weight))
+
+
 if __name__ == '__main__':
     g1: WeightedGraph = {
         'A': {('B', 2), ('C', 6), ('D', 5)},
@@ -53,6 +64,19 @@ if __name__ == '__main__':
 
 
     from pprint import pprint
-    pprint(sort_edges(g1))
-    print()
-    pprint(sort_edges(g2))
+    # pprint(sort_edges(g1))
+    # print()
+    # pprint(sort_edges(g2))
+    g: WeightedGraph = {
+        'A': set(), 
+        'B': set(),
+        'C': set(),}
+    e: Edge = Edge(10, 'A', 'B')
+    pprint(g)
+    add_edge(g, e)
+    pprint(g)
+    add_edge(g, Edge(15, 'A', 'C'))
+    pprint(g)
+
+    remove_edge(g, e)
+    pprint(g)
