@@ -14,6 +14,8 @@ def coin_change(coins: list[int], amount: int) -> list[int] | None:
     # return dp[amount]  # return the list of coins used to make change for amount
     return sorted(dp[amount], reverse=True)
 
+
+
 if __name__ == "__main__":
     print(coin_change([1, 2, 5, 10, 20], 27)) 
     print(coin_change([1, 2, 5, 10, 20], 33)) 
@@ -21,3 +23,6 @@ if __name__ == "__main__":
     print()
     print(coin_change([2, 5], 6)) 
     print(coin_change([2, 5], 3)) 
+    print()
+    for i in range(101):
+        print(coin_change([1, 2, 5, 10], i))
