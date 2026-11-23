@@ -1,4 +1,4 @@
-from dagor import JuegoD10, JugadorD10, JugadorD10Aleatorio
+from dagor import JuegoD10, JugadorD10, JugadorD10Aleatorio, JugadorD10Interactivo, JugadorD10Estrategico
 
 class JugadorD10SiempreTiraUno(JugadorD10): 
 
@@ -14,6 +14,6 @@ class JugadorD10SiempreTiraUno(JugadorD10):
 
 
 jugador1 = JugadorD10SiempreTiraUno('OnlyOne')
-jugador2 = JugadorD10Aleatorio('RandomBoy')
+jugador2 = JugadorD10Interactivo('Human')
 juego = JuegoD10(jugador1, jugador2)
-juego.inicia()
+juego.inicia(veces=1)
